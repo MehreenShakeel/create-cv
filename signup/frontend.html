@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sign-up">
+            <header>Sign Up</header>
+            <form id="signupForm" action="/signup" method="POST">
+                    <div class="input-field">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="dob">Date of birth</label>
+                        <input type="date" name="dob" id="dob" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="number">Phone Number</label>
+                        <input type="number" name="number" id="number" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <button type="submit">Sign Up</button>
+            </form>
+            
+            <div class="link">
+                Already a member? <a href="loginpage.html"> Sign-in Now</a>
+            </div>
+        </div>
+    </div>      
+    <script>
+        $.ajax({
+            type: "POST",
+            url:"/signup",
+            processData: false,
+            contentType: false,
+            success: function(response){
+                alert("data stored in database");
+                emptyForm();
+            },
+
+            error: function(){
+                alert("error in submitting");
+            },
+            });
+        function emptyForm(){
+            let form=document.getElementById("signupForm");
+            form.reset();
+        };
+      </script>
+</body>
+</html>
